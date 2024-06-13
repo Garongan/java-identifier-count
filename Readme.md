@@ -85,6 +85,81 @@ jadi hasil akhir pemanggilan fungsi roger(8, 8) adalah 4
     ```
 
     #### dijawab di dalam [code ini](src/IdentifierCount.java)
+   ```java
+   import java.util.regex.Matcher;
+   import java.util.regex.Pattern;
+
+   public class IdentifierCount {
+        // declaration attribute of class
+        private final String string;
+        private Integer uppercaseCount;
+        private Integer lowercaseCount;
+        private Integer numberCount;
+        private Integer symbolCount;
+    
+        // declare the constructor
+        public IdentifierCount(String string) {
+            this.string = string;
+            this.uppercaseCount = 0;
+            this.lowercaseCount = 0;
+            this.numberCount = 0;
+            this.symbolCount = 0;
+        }
+    
+        // function to set the value of attribute uppercaseCount, lowercaseCount, numberCount, and symbolCount
+        public void countSameChar() {
+            // call the function to count string if matches regex argument
+            this.uppercaseCount = calculateMatchPattern("[A-Z]");
+            this.lowercaseCount = calculateMatchPattern("[a-z]");
+            this.numberCount = calculateMatchPattern("[0-9]");
+            this.symbolCount = calculateMatchPattern("[[^a-z]&&[^A-Z]&&[^0-9]&&[^ ]]");
+        }
+    
+        // function to calculate pattern if match from regex parameter
+        private int calculateMatchPattern(String regex) {
+            int count = 0;
+            Pattern compile = Pattern.compile(regex);
+            Matcher matcher = compile.matcher(string);
+            while (matcher.find()) {
+                ++count;
+            }
+            return count;
+        }
+    
+        // override toString function from object to print the result
+        @Override
+        public String toString() {
+            return String.format("uppercase: %s \nlowercase: %s \nangka : %s \nsymbol : %s", uppercaseCount, lowercaseCount, numberCount, symbolCount);
+        }
+    }
+   ```
+   #### berikut code dalam Main.java
+
+   ```java
+        import java.util.Scanner;
+
+        public class Main {
+            public static void main(String[] args) {
+        
+                // getting input from terminal by text
+                Scanner scanner = new Scanner(System.in);
+        
+                // assign input from terminal to variable
+                System.out.print("Please input the text to check!: ");
+                String input = scanner.nextLine();
+        
+                // instance class identifier count to access the method or attribute
+                IdentifierCount identifierCount = new IdentifierCount(input);
+        
+                // call the method to count same char from instance
+                identifierCount.countSameChar();
+        
+                // print the result
+                System.out.println(identifierCount.toString());
+            }
+        }
+   ```
    - dalam code tersebut diharuskan untuk input string yang akan dihitung berapa jumlah character uppercase, lowercase, number, dan symbolnya menggunakan regex
    - hasil dari code yang dibuat:
+     
    ![hasil output](/Screenshot%20from%202024-06-13%2013-43-18.png)
