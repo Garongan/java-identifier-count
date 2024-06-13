@@ -87,4 +87,4 @@ jadi hasil akhir pemanggilan fungsi roger(8, 8) adalah 4
     #### dijawab di dalam [code ini](src/IdentifierCount.java)
    - dalam code tersebut diharuskan untuk input string yang akan dihitung berapa jumlah character uppercase, lowercase, number, dan symbolnya menggunakan regex
    - hasil dari code yang dibuat:
-   ![hasil output](/Screenshot%20from%202024-06-13%2013-08-14.png)
+   ![hasil output](/Screenshot%20from%202024-06-13%2013-43-18.png)

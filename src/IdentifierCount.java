@@ -24,7 +24,7 @@ public class IdentifierCount {
         this.uppercaseCount = calculateMatchPattern("[A-Z]");
         this.lowercaseCount = calculateMatchPattern("[a-z]");
         this.numberCount = calculateMatchPattern("[0-9]");
-        this.symbolCount = calculateMatchPattern("[[^a-z] && [^A-Z] && [^0-9]]");
+        this.symbolCount = calculateMatchPattern("[[^a-z]&&[^A-Z]&&[^0-9]&&[^ ]]");
     }
 
     // function to calculate pattern if match from regex parameter
@@ -32,7 +32,7 @@ public class IdentifierCount {
         int count = 0;
         Pattern compile = Pattern.compile(regex);
         Matcher matcher = compile.matcher(string);
-        while (matcher.find()){
+        while (matcher.find()) {
             ++count;
         }
         return count;
